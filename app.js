@@ -16,10 +16,13 @@ app.use(cors());
 app.use(express.static('public'));
 
 // MongoDB Connection
-mongoose.connect('mongodb://127.0.0.1:27017/business_website', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const uri = "mongodb+srv://reksitrajan01:8n4SHiaJfCZRrimg@cluster0.mperr.mongodb.net/test?retryWrites=true&w=majority";
+mongoose.connect(uri)
+    .then(() => console.log('✅ MongoDB Connected Successfully!'))
+    .catch((err) => {
+        console.error('❌ MongoDB connection error:', err);
+        process.exit(1);
+    });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
