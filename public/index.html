@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnovaTech Solutions - Your Business Partner</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for Business Website */
+
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --info-color: #0dcaf0;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+/* Navigation Styles */
+.navbar {
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #fff !important;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-background {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.carousel-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 1;
+}
+
+.carousel-background .container {
+    position: relative;
+    z-index: 2;
+}
+
+.animate-fade-in {
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Feature Cards */
+.feature-card {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
+}
+
+.feature-icon {
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+}
+
+/* About Section */
+.about-content {
+    padding: 2rem 0;
+}
+
+.highlight {
+    background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.stat-item h4 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.about-image img {
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.about-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Accordion Styles */
+.accordion-item {
+    border: none;
+    margin-bottom: 1rem;
+    border-radius: 10px !important;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.accordion-button {
+    background: #fff;
+    border: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 1.5rem;
+    border-radius: 10px !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border: none;
+}
+
+.accordion-body {
+    padding: 1.5rem;
+    background: #f8f9fa;
+}
+
+.accordion-body ul {
+    margin-bottom: 0;
+}
+
+.accordion-body li {
+    margin-bottom: 0.5rem;
+}
+
+/* Gallery Styles */
+.gallery-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-image {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(13, 110, 253, 0.9), rgba(220, 53, 69, 0.9));
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 2rem;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Contact Section */
+.contact-table-wrapper {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.contact-table td {
+    padding: 1.5rem 1rem;
+    vertical-align: top;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.contact-table tr:last-child td {
+    border-bottom: none;
+}
+
+.contact-icon {
+    width: 60px;
+    text-align: center;
+}
+
+.contact-icon i {
+    font-size: 1.5rem;
+}
+
+/* Modal Styles */
+.modal-content {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    border-bottom: 1px solid #e9ecef;
+    padding: 1.5rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.nav-tabs .nav-link {
+    border: none;
+    border-radius: 10px 10px 0 0;
+    color: #6c757d;
+    font-weight: 600;
+}
+
+.nav-tabs .nav-link.active {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.social-links a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .display-5 {
+        font-size: 2rem;
+    }
+    
+    .gallery-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-table td {
+        display: block;
+        padding: 1rem 0;
+    }
+    
+    .contact-icon {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stat-item {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section {
+        text-align: center;
+    }
+    
+    .btn-lg {
+        display: block;
+        margin-bottom: 1rem;
+    }
+    
+    .feature-card {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Success/Error Messages */
+.alert {
+    border-radius: 10px;
+    border: none;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    color: #155724;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    color: #721c24;
+}
+
+/* Smooth scroll padding for fixed navbar */
+html {
+    scroll-padding-top: 80px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0a58ca;
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="fas fa-rocket me-2"></i>InnovaTech
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light btn-sm ms-2" onclick="showLoginModal()">
+                            <i class="fas fa-sign-in-alt me-1"></i>Login
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-light btn-sm ms-2 d-none" id="logoutBtn" onclick="logout()">
+                            <i class="fas fa-sign-out-alt me-1"></i>Logout
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section with Slider -->
+    <section id="home" class="hero-section">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-background" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <div class="container">
+                            <div class="row align-items-center min-vh-100">
+                                <div class="col-lg-6 text-white">
+                                    <h1 class="display-4 fw-bold mb-4 animate-fade-in">Transform Your Business</h1>
+                                    <p class="lead mb-4">We provide cutting-edge solutions to help your business grow and succeed in the digital age.</p>
+                                    <a href="#about" class="btn btn-light btn-lg me-3">Learn More</a>
+                                    <a href="#contact" class="btn btn-outline-light btn-lg">Get Started</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-background" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <div class="container">
+                            <div class="row align-items-center min-vh-100">
+                                <div class="col-lg-6 text-white">
+                                    <h1 class="display-4 fw-bold mb-4">Innovation at Its Best</h1>
+                                    <p class="lead mb-4">Discover innovative solutions tailored to meet your unique business needs and challenges.</p>
+                                    <a href="#services" class="btn btn-light btn-lg me-3">Our Services</a>
+                                    <a href="#gallery" class="btn btn-outline-light btn-lg">View Portfolio</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-background" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div class="container">
+                            <div class="row align-items-center min-vh-100">
+                                <div class="col-lg-6 text-white">
+                                    <h1 class="display-4 fw-bold mb-4">Your Success Partner</h1>
+                                    <p class="lead mb-4">Join hundreds of satisfied clients who have transformed their businesses with our expertise.</p>
+                                    <a href="#contact" class="btn btn-light btn-lg me-3">Contact Us</a>
+                                    <a href="#about" class="btn btn-outline-light btn-lg">About Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="container position-relative" style="margin-top: -100px; z-index: 10;">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-lg border-0 feature-card">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-lightbulb fa-3x text-primary"></i>
+                            </div>
+                            <h5 class="card-title">Innovation</h5>
+                            <p class="card-text">Cutting-edge solutions that drive your business forward with the latest technology.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-lg border-0 feature-card">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-users fa-3x text-success"></i>
+                            </div>
+                            <h5 class="card-title">Expert Team</h5>
+                            <p class="card-text">Experienced professionals dedicated to delivering exceptional results for your project.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-lg border-0 feature-card">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-trophy fa-3x text-warning"></i>
+                            </div>
+                            <h5 class="card-title">Proven Results</h5>
+                            <p class="card-text">Track record of successful projects and satisfied clients across various industries.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <span class="text-primary fw-bold text-uppercase">About InnovaTech</span>
+                        <h2 class="display-5 fw-bold mb-4">We Build Digital Solutions That Matter</h2>
+                        <div class="about-description">
+                            <p class="lead mb-4">With over <span class="text-primary fw-bold">10 years of experience</span> in the industry, we have been helping businesses transform their operations through innovative technology solutions.</p>
+                            <p>Our team of <span class="highlight">expert developers</span>, <span class="highlight">designers</span>, and <span class="highlight">consultants</span> work together to deliver comprehensive solutions that drive growth and efficiency.</p>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-sm-6">
+                                <div class="stat-item mb-3">
+                                    <h4 class="text-primary fw-bold">500+</h4>
+                                    <span class="text-muted">Projects Completed</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="stat-item mb-3">
+                                    <h4 class="text-primary fw-bold">50+</h4>
+                                    <span class="text-muted">Happy Clients</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Our Team" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section with Accordion -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Our Services & Solutions</h2>
+                <p class="lead text-muted">Comprehensive solutions tailored to your business needs</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion" id="servicesAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#service1">
+                                    <i class="fas fa-code me-3 text-primary"></i>
+                                    Web Development
+                                </button>
+                            </h2>
+                            <div id="service1" class="accordion-collapse collapse show" data-bs-parent="#servicesAccordion">
+                                <div class="accordion-body">
+                                    <p>Create stunning, responsive websites and web applications using the latest technologies. Our development team specializes in:</p>
+                                    <ul>
+                                        <li>Custom website development</li>
+                                        <li>E-commerce solutions</li>
+                                        <li>Content Management Systems</li>
+                                        <li>Progressive Web Applications</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#service2">
+                                    <i class="fas fa-mobile-alt me-3 text-success"></i>
+                                    Mobile App Development
+                                </button>
+                            </h2>
+                            <div id="service2" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                                <div class="accordion-body">
+                                    <p>Build powerful mobile applications for iOS and Android platforms. Our mobile solutions include:</p>
+                                    <ul>
+                                        <li>Native iOS and Android apps</li>
+                                        <li>Cross-platform development</li>
+                                        <li>UI/UX design for mobile</li>
+                                        <li>App store optimization</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#service3">
+                                    <i class="fas fa-cloud me-3 text-info"></i>
+                                    Cloud Solutions
+                                </button>
+                            </h2>
+                            <div id="service3" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                                <div class="accordion-body">
+                                    <p>Migrate and optimize your business operations with cloud technology. Our cloud services offer:</p>
+                                    <ul>
+                                        <li>Cloud migration strategies</li>
+                                        <li>AWS and Azure solutions</li>
+                                        <li>DevOps and CI/CD pipelines</li>
+                                        <li>Cloud security and monitoring</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#service4">
+                                    <i class="fas fa-chart-line me-3 text-warning"></i>
+                                    Digital Marketing
+                                </button>
+                            </h2>
+                            <div id="service4" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                                <div class="accordion-body">
+                                    <p>Grow your online presence and reach your target audience effectively. Our marketing services include:</p>
+                                    <ul>
+                                        <li>Search Engine Optimization (SEO)</li>
+                                        <li>Social Media Marketing</li>
+                                        <li>Pay-Per-Click Advertising</li>
+                                        <li>Content Marketing Strategy</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Our Portfolio</h2>
+                <p class="lead text-muted">Showcasing our best work and achievements</p>
+            </div>
+            <ul class="gallery-list">
+                <li class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Project 1" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h5>E-commerce Platform</h5>
+                        <p>Modern online shopping experience</p>
+                    </div>
+                </li>
+                <li class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Project 2" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h5>Analytics Dashboard</h5>
+                        <p>Data visualization and insights</p>
+                    </div>
+                </li>
+                <li class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Project 3" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h5>Mobile Banking App</h5>
+                        <p>Secure financial transactions</p>
+                    </div>
+                </li>
+                <li class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Project 4" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h5>Healthcare Portal</h5>
+                        <p>Patient management system</p>
+                    </div>
+                </li>
+                <li class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Project 5" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h5>Real Estate Platform</h5>
+                        <p>Property listing and management</p>
+                    </div>
+                </li>
+                <li class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Project 6" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h5>Corporate Website</h5>
+                        <p>Professional business presence</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Get In Touch</h2>
+                <p class="lead text-muted">Ready to start your project? Contact us today!</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-table-wrapper">
+                        <table class="table table-borderless contact-table">
+                            <tbody>
+                                <tr>
+                                    <td class="contact-icon"><i class="fas fa-map-marker-alt text-primary"></i></td>
+                                    <td>
+                                        <strong>Address</strong><br>
+                                        123 Business Street, Tech City, TC 12345
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="contact-icon"><i class="fas fa-phone text-success"></i></td>
+                                    <td>
+                                        <strong>Phone</strong><br>
+                                        +1 (555) 123-4567
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="contact-icon"><i class="fas fa-envelope text-info"></i></td>
+                                    <td>
+                                        <strong>Email</strong><br>
+                                        info@innovatech.com
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="contact-icon"><i class="fas fa-clock text-warning"></i></td>
+                                    <td>
+                                        <strong>Business Hours</strong><br>
+                                        Mon - Fri: 9:00 AM - 6:00 PM
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-primary btn-lg" onclick="showContactModal()">
+                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-rocket me-2"></i>InnovaTech Solutions</h5>
+                    <p class="mb-0">Transforming businesses through innovative technology solutions.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <p class="mb-0 mt-2">&copy; 2024 InnovaTech Solutions. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login / Register</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="authTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button">
+                                Login
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button">
+                                Register
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="authTabsContent">
+                        <div class="tab-pane fade show active" id="login" role="tabpanel">
+                            <form id="loginForm" class="mt-3">
+                                <div class="mb-3">
+                                    <label for="loginUsername" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="loginUsername" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loginPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="loginPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Login</button>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="register" role="tabpanel">
+                            <form id="registerForm" class="mt-3">
+                                <div class="mb-3">
+                                    <label for="registerUsername" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="registerUsername" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="registerEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="registerPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-success w-100">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Send Message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label for="contactName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="contactName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="contactEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactPhone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="contactPhone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label">Message</label>
+                            <textarea class="form-control" id="contactMessage" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
